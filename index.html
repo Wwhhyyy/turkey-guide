@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a6b8a">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="土耳其攻略">
+<title>土耳其8天7晚自由行攻略 · 最终版 | 2026.08.08-08.15</title>
+<style>
+  :root {
+    --primary: #1a6b8a;
+    --primary-dark: #0e4d64;
+    --accent: #e8833a;
+    --accent-light: #fdf0e6;
+    --sand: #f7f3ee;
+    --card-bg: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #e8e2da;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --istanbul: #8e44ad;
+    --fethiye: #16a085;
+    --antalya: #2980b9;
+    --cappadocia: #d35400;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0e4d64 0%, #1a6b8a 40%, #e8833a 100%);
+    color: white;
+    padding: 60px 24px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.06) 0%, transparent 40%);
+    animation: float 20s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-2%, 2%) rotate(1deg); }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; }
+  .hero h1 { font-size: 2.6em; font-weight: 800; letter-spacing: 2px; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 1.15em; opacity: 0.92; margin-bottom: 20px; }
+  .hero .version-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.28);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+    padding: 4px 16px;
+    font-size: 0.9em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .hero .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px;
+    padding: 8px 24px;
+    font-size: 1em;
+    backdrop-filter: blur(4px);
+  }
+  .hero .route-line {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.95em;
+  }
+  .route-line .city { font-weight: 700; }
+  .route-line .arrow { opacity: 0.6; }
+
+  /* Nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav a {
+    display: inline-block;
+    padding: 14px 16px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav a:hover, .nav a.active { color: var(--primary); border-bottom-color: var(--accent); }
+
+  /* Container */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Section */
+  .section { padding: 48px 0 24px; }
+  .section-title {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 1.2em; }
+  .section-desc { color: var(--text-light); margin-bottom: 24px; font-size: 0.95em; }
+
+  /* Overview cards */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .ov-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .ov-card .ov-icon { font-size: 1.8em; margin-bottom: 8px; }
+  .ov-card .ov-label { font-size: 0.8em; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+  .ov-card .ov-value { font-size: 1.1em; font-weight: 700; margin-top: 4px; }
+
+  /* Booking status */
+  .booking-status {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+  .booking-status h4 { font-size: 1em; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; }
+  .bk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 0.88em;
+    border-bottom: 1px dashed #f0ebe4;
+  }
+  .bk-item:last-child { border-bottom: none; }
+  .bk-tag {
+    font-size: 0.72em;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+  .bk-done { background: #d5f5e3; color: #1e8449; }
+  .bk-todo { background: #fdebd0; color: #ca6f1e; }
+
+  /* Risk banner */
+  .risk-banner {
+    background: #fff8f0;
+    border: 1px solid #f5cba7;
+    border-left: 5px solid var(--accent);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    font-size: 0.9em;
+  }
+  .risk-banner strong { color: var(--primary-dark); }
+
+  /* Hours table */
+  .hours-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border); }
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    font-size: 0.85em;
+    min-width: 760px;
+  }
+  .hours-table th {
+    background: var(--primary);
+    color: white;
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .hours-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .hours-table tr:last-child td { border-bottom: none; }
+  .hours-table tr:nth-child(even) { background: #faf8f5; }
+  .hours-table .spot { font-weight: 700; white-space: nowrap; }
+  .hours-table .closed { color: var(--danger); font-weight: 700; }
+  .hours-table .book { color: #1e8449; font-weight: 600; }
+  .hours-table .city-row td { background: var(--accent-light); font-weight: 800; color: var(--primary-dark); }
+
+  /* Day timeline */
+  .day-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .day-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-num {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .day-num .d-label { font-size: 0.6em; opacity: 0.85; letter-spacing: 1px; }
+  .day-num .d-date { font-size: 1.05em; line-height: 1.1; }
+  .day-info { flex: 1; }
+  .day-info h3 { font-size: 1.15em; font-weight: 700; }
+  .day-info .day-meta { font-size: 0.85em; color: var(--text-light); margin-top: 2px; }
+  .day-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .tag {
+    font-size: 0.72em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .tag-flight { background: #eaf2fb; color: #2471a3; }
+  .tag-drive { background: #eafaf1; color: #1e8449; }
+  .tag-balloon { background: #fdf2e9; color: #ca6f1e; }
+  .tag-paraglide { background: #f4ecf7; color: #7d3c98; }
+  .tag-beach { background: #e8f8f5; color: #148f77; }
+  .tag-culture { background: #fef9e7; color: #b7950b; }
+  .tag-heart { background: #fdedec; color: #c0392b; }
+  .toggle-icon {
+    font-size: 1.2em;
+    color: var(--text-light);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .day-card.open .toggle-icon { transform: rotate(180deg); }
+  .day-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .day-card.open .day-body { max-height: 3600px; }
+  .day-content { padding: 0 24px 24px; border-top: 1px solid var(--border); }
+
+  .timeline { padding-top: 16px; }
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    padding-bottom: 18px;
+    position: relative;
+  }
+  .tl-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 22px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    background: white;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .tl-time { font-size: 0.8em; font-weight: 700; color: var(--accent); min-width: 52px; padding-top: 2px; }
+  .tl-text { flex: 1; }
+  .tl-text strong { display: block; font-size: 0.95em; }
+  .tl-text .tl-detail { font-size: 0.85em; color: var(--text-light); margin-top: 2px; }
+  .tl-text .tl-hours { font-size: 0.78em; color: #1e8449; margin-top: 3px; font-weight: 600; }
+
+  .tip-box {
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 0.85em;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .tip-box.food { background: #fef9e7; border: 1px solid #f9e79f; }
+  .tip-box.stay { background: #eaf2fb; border: 1px solid #aed6f1; }
+  .tip-box.warn { background: #fdedec; border: 1px solid #f5b7b1; }
+  .tip-box.info { background: #eafaf1; border: 1px solid #a9dfbf; }
+  .tip-box .tip-icon { font-size: 1.1em; flex-shrink: 0; }
+
+  /* Info cards grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .info-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 22px;
+  }
+  .info-card h4 {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-dark);
+  }
+  .info-card ul { list-style: none; }
+  .info-card li {
+    padding: 6px 0;
+    font-size: 0.88em;
+    color: var(--text);
+    border-bottom: 1px dashed #f0ebe4;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .info-card li:last-child { border-bottom: none; }
+  .info-card li::before { content: '•'; color: var(--accent); font-weight: 800; flex-shrink: 0; }
+
+  /* Budget table */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+  }
+  .budget-table th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .budget-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:nth-child(even) { background: #faf8f5; }
+  .budget-table .total-row td { font-weight: 800; background: var(--accent-light); color: var(--primary-dark); }
+
+  /* Checklist */
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .check-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .check-item:hover { border-color: var(--accent); }
+  .check-item input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--success);
+    flex-shrink: 0;
+  }
+  .check-item.done { opacity: 0.55; text-decoration: line-through; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+    font-size: 0.82em;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* Print */
+  @media print {
+    .nav { display: none; }
+    .day-body { max-height: none !important; }
+    .hero { padding: 30px 20px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.8em; }
+    .day-header { padding: 14px 16px; }
+    .day-content { padding: 0 16px 18px; }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>TURKIYE</h1>
+    <div class="version-badge">最终版 · 已含实际订票信息</div>
+    <div class="subtitle">土耳其 8 天 7 晚自由行攻略 · 逆时针环线 · 含营业时间与预约指南</div>
+    <div class="date-badge">2026年8月8日（周六）— 8月15日（周六）14:20 离境 · 2人同行</div>
+    <div class="route-line">
+      <span class="city">伊斯坦布尔</span><span class="arrow">✈</span>
+      <span class="city">达拉曼</span><span class="arrow">🚗</span>
+      <span class="city">费特希耶</span><span class="arrow">🚗</span>
+      <span class="city">卡尔坎</span><span class="arrow">🚗</span>
+      <span class="city">卡什</span><span class="arrow">🚗</span>
+      <span class="city">安塔利亚</span><span class="arrow">✈</span>
+      <span class="city">卡帕多奇亚</span><span class="arrow">✈</span>
+      <span class="city">伊斯坦布尔</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav" id="nav">
+  <a href="#overview">总览</a>
+  <a href="#hours">营业时间&预约</a>
+  <a href="#itinerary">每日行程</a>
+  <a href="#transport">交通</a>
+  <a href="#food">美食</a>
+  <a href="#money">金钱</a>
+  <a href="#safety">安全防骗</a>
+  <a href="#packing">行前清单</a>
+  <a href="#budget">预算</a>
+</div>
+
+<div class="container">
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+  <div class="section-title"><span class="icon">🗺️</span> 行程总览</div>
+  <div class="section-desc">逆时针大环线：伊斯坦布尔（8/9整天 + 8/10上午）→ <strong>8/10下午16:30萨比哈机场直飞达拉曼</strong> → 自驾D400南下（费特希耶滑翔伞 → <strong>卡尔坎住一晚+Mahal日落晚餐</strong> → 卡普塔斯 → <strong>卡什Villa Hotel Tamara</strong>）→ 安塔利亚 → <strong>8/13晚20:00飞卡帕多奇亚</strong>看热气球日出（只看不坐）→ 回伊斯坦布尔，8/15从容赶14:20航班。</div>
+
+  <div class="booking-status">
+    <h4>📌 预订状态一览</h4>
+    <div class="bk-item"><span class="bk-tag bk-done">已订</span><div>8/10（周一）<strong>16:30 伊斯坦布尔萨比哈机场SAW → 达拉曼DLM</strong> 航班</div></div>
+    <div class="bk-item"><span class="bk-tag bk-done">已订</span><div>8/13（周四）<strong>20:00 安塔利亚AYT → 开塞利ASR</strong> 航班（当晚直达卡帕）</div></div>
+    <div class="bk-item"><span class="bk-tag bk-todo">待订</span><div>8/14（周五）<strong>卡帕多奇亚ASR → 伊斯坦布尔</strong> 航班（选16:30-18:00班次，尽早订）</div></div>
+    <div class="bk-item"><span class="bk-tag bk-todo">待订</span><div>8/15（周六）<strong>14:20 伊斯坦布尔 → 回国</strong> 国际航班（如尚未出票请确认）</div></div>
+    <div class="bk-item"><span class="bk-tag bk-todo">待订</span><div>滑翔伞（8/11最早批次）· 租车（Cizgi，达拉曼取/安塔利亚还）· 全程酒店 · <strong>Mahal Beach Club卡尔坎日落晚餐订位</strong> · 地下水宫电子票</div></div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card">
+      <div class="ov-icon">📅</div>
+      <div class="ov-label">行程天数</div>
+      <div class="ov-value">8天7晚</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🏙️</div>
+      <div class="ov-label">途经城市</div>
+      <div class="ov-value">6座城市</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">✈️</div>
+      <div class="ov-label">内陆航班</div>
+      <div class="ov-value">3程（2程已订）</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🚗</div>
+      <div class="ov-label">自驾里程</div>
+      <div class="ov-value">4天约400km</div>
+    </div>
+  </div>
+  <div class="risk-banner">
+    <strong>⚠️ 本路线的四个关键点（务必知晓）：</strong><br>
+    ① <strong>8/10航班从萨比哈机场SAW起飞（亚洲区）</strong>——SAW在欧洲区老城对面，车程约1-1.5小时（堵车更久）。16:30起飞，<strong>最晚13:00从老城出发</strong>。上午正好逛周一开门的大巴扎。<br>
+    ② <strong>大巴扎周日闭市</strong>——8/9（周日）关门，已排8/10（周一）上午逛；8/9改逛圣索菲亚、蓝色清真寺、地下水宫、香料市场（均正常开放）。<br>
+    ③ <strong>8/14卡帕→伊斯坦布尔航班尚未订</strong>——8/13晚20:00安塔利亚→开塞利已订，但8/14下午回伊斯坦布尔这程还没订，<strong>务必尽早锁定16:30-18:00班次</strong>，否则影响8/15赶14:20国际航班。<br>
+    ④ <strong>热气球只看不坐</strong>——8/14清晨洞穴酒店屋顶看气球日出（免费、无需预订，8月飞行率约90%+）；8/15是14:20国际航班，需11:20前到IST，故8/14晚必须住伊斯坦布尔。
+  </div>
+  <div class="tip-box info">
+    <span class="tip-icon">💡</span>
+    <div><strong>8月天气提示：</strong>伊斯坦布尔 24-30°C 偶有阵雨；D400沿海（费特希耶/卡尔坎/卡什/安塔利亚）30-38°C 干热，正午海滩/户外注意防晒补水；卡帕多奇亚白天 30-35°C、清晨仅 15°C 左右（屋顶看气球记得披件外套）。8月日落约20:00，白天很长，可充分利用——正好配Mahal的日落晚餐。</div>
+  </div>
+</div>
+
+<!-- HOURS & BOOKING -->
+<div class="section" id="hours">
+  <div class="section-title"><span class="icon">🕐</span> 景点营业时间 & 预约指南</div>
+  <div class="section-desc">按行程顺序整理，绿色为预约建议。时间为夏季（8月）参考，出行前请以官网/现场为准。</div>
+  <div class="hours-wrap">
+    <table class="hours-table">
+      <tr><th>景点</th><th>营业时间</th><th>门票</th><th>预约/购票方式</th><th>关键提示</th></tr>
+      <tr class="city-row"><td colspan="5">伊斯坦布尔（8/8-8/10上午、8/14-8/15）</td></tr>
+      <tr>
+        <td class="spot">圣索菲亚大教堂</td>
+        <td>每日 9:00-19:30<br><span class="closed">周五12:30-14:30游客禁入</span></td>
+        <td>25欧元</td>
+        <td><span class="book">仅现场售票亭，不能网上预约</span>（无官方线上票）</td>
+        <td>你们8/9（周日）去无碍；外国人走专用入口（苏丹艾哈迈德三世喷泉对面）；8:30前到排队；脱鞋、女士备头巾</td>
+      </tr>
+      <tr>
+        <td class="spot">蓝色清真寺</td>
+        <td>约8:30-18:00<br><span class="closed">每日5次礼拜各关约90分钟</span></td>
+        <td>免费</td>
+        <td>无需预约，现场排队</td>
+        <td>避开礼拜时段（约13:15、17:00前后各关一场）；行程排在10:30正好错开；脱鞋、女士包头</td>
+      </tr>
+      <tr>
+        <td class="spot">地下水宫</td>
+        <td>9:00-19:00<br>（夏季夜间场至22:00）</td>
+        <td>约600TL</td>
+        <td><span class="book">推荐网上购票</span>（官网/Klook/GetYourGuide，免排队）</td>
+        <td>现场买票队伍长，建议提前1-2天线上买好按时段入场</td>
+      </tr>
+      <tr>
+        <td class="spot">大巴扎</td>
+        <td>周一至周六 8:30-19:00<br><span class="closed">周日及宗教节日闭市</span></td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td><strong>8/9周日关门！已排8/10周一8:30开门即入</strong>，逛到11点再去机场；砍价对半起</td>
+      </tr>
+      <tr>
+        <td class="spot">香料市场</td>
+        <td>每日 约8:00-19:00</td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td>周日也开（个别店铺休息）；买软糖/红茶/香料</td>
+      </tr>
+      <tr>
+        <td class="spot">博斯普鲁斯渡轮</td>
+        <td>每日，班次密集<br>（末班约23:00）</td>
+        <td>Istanbulkart约25TL</td>
+        <td>无需预约，码头刷交通卡</td>
+        <td>8/9安排在日落前17:00-19:00上船，金色光线最美</td>
+      </tr>
+      <tr class="city-row"><td colspan="5">费特希耶（8/10晚-8/11）</td></tr>
+      <tr>
+        <td class="spot">滑翔伞（巴巴山）</td>
+        <td>清晨-上午批次</td>
+        <td>600-1200TL/人<br>（+拍摄约200TL）</td>
+        <td><span class="book">必须提前1-2周预订</span>（Klook/GetYourGuide/官网）</td>
+        <td>订8/11最早批次（7:00-8:00接），下午整个空出来赶路+玩</td>
+      </tr>
+      <tr>
+        <td class="spot">Oludeniz死海海滩</td>
+        <td>全天（泻湖约8:00-20:00）</td>
+        <td>约100TL</td>
+        <td>无需预约</td>
+        <td>滑翔伞降落点，8月水温28°C+</td>
+      </tr>
+      <tr>
+        <td class="spot">萨克勒肯特峡谷 Saklıkent</td>
+        <td>约8:00-18:00</td>
+        <td>约150TL</td>
+        <td>无需预约</td>
+        <td>8/11下午选项A：费特希耶出发约1h车程，18km峡谷涉水徒步，备溯溪鞋，8月水量小较安全</td>
+      </tr>
+      <tr>
+        <td class="spot">卡亚寇伊鬼城 Kayaköy</td>
+        <td>全天（露天遗迹）</td>
+        <td>约100TL</td>
+        <td>无需预约</td>
+        <td>8/11下午选项B：费特希耶南30min，废弃希腊石屋村，拍照出片，逛1.5h</td>
+      </tr>
+      <tr>
+        <td class="spot">费特希耶鱼市</td>
+        <td>约9:00-22:00</td>
+        <td>海鲜时价+加工费</td>
+        <td>无需预约</td>
+        <td>自选海鲜、旁边餐厅代加工，8/10晚或8/11午餐</td>
+      </tr>
+      <tr class="city-row"><td colspan="5">卡尔坎 / 卡普塔斯（8/11晚-8/12）</td></tr>
+      <tr>
+        <td class="spot">Mahal Beach Club（卡尔坎）</td>
+        <td>白天海滩 → 晚上海滨餐厅<br>（至深夜）</td>
+        <td>晚餐按时价</td>
+        <td><span class="book">8月旺季务必提前订位</span>（电话/邮件/官网，注明要日落时段）</td>
+        <td><strong>太太点名 ❤ 安排在8/11晚日落晚餐</strong>（8月日落约20:00，19:00-19:30到店占好西向座位）；海滨餐厅，地中海海鲜</td>
+      </tr>
+      <tr>
+        <td class="spot">卡尔坎老城/海港</td>
+        <td>开放区域，全天</td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td>太太必去点；鹅卵石小巷+海港，8/11傍晚到店前漫步、8/12上午再逛</td>
+      </tr>
+      <tr>
+        <td class="spot">帕塔拉海滩 Patara</td>
+        <td>约8:00-19:00</td>
+        <td>约150TL（含古城）</td>
+        <td>无需预约</td>
+        <td>8/12上午加分项：卡尔坎以东15km，18km金色沙滩+古城遗迹，人少景美</td>
+      </tr>
+      <tr>
+        <td class="spot">卡普塔斯海滩</td>
+        <td>全天（公共海滩）</td>
+        <td>免费（停车约50TL）</td>
+        <td>无需预约</td>
+        <td>187级台阶下滩；8/12中午顺路停，峡谷入海口绿松石色海水</td>
+      </tr>
+      <tr class="city-row"><td colspan="5">卡什（8/12晚-8/13）</td></tr>
+      <tr>
+        <td class="spot">卡什古城剧场</td>
+        <td>全天（露天遗迹）</td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td>镇边山坡，日落时分去坐坐</td>
+      </tr>
+      <tr>
+        <td class="spot">卡什海港/老城</td>
+        <td>开放区域，全天</td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td>比卡尔坎更质朴宁静；可选短程游船（沉没城市/海湾）</td>
+      </tr>
+      <tr class="city-row"><td colspan="5">安塔利亚（8/13）</td></tr>
+      <tr>
+        <td class="spot">卡莱奇老城/哈德良门</td>
+        <td>开放区域，全天</td>
+        <td>免费</td>
+        <td>无需预约</td>
+        <td>8/13傍晚还车后逛1.5小时+早晚餐，18:30前赴机场</td>
+      </tr>
+      <tr class="city-row"><td colspan="5">卡帕多奇亚（8/13晚-8/14）</td></tr>
+      <tr>
+        <td class="spot">看热气球（屋顶）</td>
+        <td>日出前后 5:45-7:30</td>
+        <td>免费</td>
+        <td>无需预约（选对酒店即可）</td>
+        <td>订带"山谷景观屋顶露台"的洞穴酒店；8/14清晨观看</td>
+      </tr>
+      <tr>
+        <td class="spot">格雷梅露天博物馆</td>
+        <td>8:00-19:00（夏季）</td>
+        <td>约15-20欧元<br>黑暗教堂另+5欧元</td>
+        <td>现场或线上（Müzekart系统）</td>
+        <td>8/14上午参观，1.5-2小时</td>
+      </tr>
+      <tr>
+        <td class="spot">乌奇萨城堡</td>
+        <td>约8:00-日落</td>
+        <td>约2-3欧元</td>
+        <td>现场购票</td>
+        <td>卡帕最高点，登顶俯瞰全景</td>
+      </tr>
+    </table>
+  </div>
+  <div class="tip-box info">
+    <span class="tip-icon">💡</span>
+    <div><strong>预约优先级（出发前2-4周办）：</strong>① <strong>8/14卡帕→伊斯坦布尔机票（最紧急，直接影响回国）</strong> ② 滑翔伞（8/11最早批次）③ Mahal Beach Club卡尔坎日落晚餐订位 ④ Villa Hotel Tamara（卡什）+卡帕洞穴酒店+卡尔坎/费特希耶酒店（8月旺季）⑤ 租车（Cizgi）⑥ 地下水宫电子票。圣索菲亚只能现场买票，靠早到排队。</div>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<div class="section" id="itinerary">
+  <div class="section-title"><span class="icon">📋</span> 每日行程</div>
+  <div class="section-desc">点击每天卡片展开/收起详细内容 · 每个景点已标注营业时间与预约状态</div>
+
+  <!-- D0 Aug 8 -->
+  <div class="day-card open">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--istanbul)">
+        <span class="d-label">DAY</span><span class="d-date">8/8</span>
+      </div>
+      <div class="day-info">
+        <h3>抵达伊斯坦布尔</h3>
+        <div class="day-meta">周六 · 夜航抵达 · 入住老城</div>
+        <div class="day-tags"><span class="tag tag-flight">国际航班</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">晚间</div>
+            <div class="tl-text">
+              <strong>抵达伊斯坦布尔机场（IST）</strong>
+              <div class="tl-detail">入境 → 取行李 → 机场ATM用银联卡取里拉（Ziraat银行免手续费）→ 购买Istanbul交通卡（地铁站可买，多人共用一张）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">夜间</div>
+            <div class="tl-text">
+              <strong>前往酒店</strong>
+              <div class="tl-detail">推荐 Havaist 机场大巴（约150TL/人，直达塔克西姆/苏丹艾哈迈德）或 Uber/Bitaksi 打车（约600-800TL）。深夜不建议路边拦出租车</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">入住</div>
+            <div class="tl-text">
+              <strong>Check-in 老城酒店</strong>
+              <div class="tl-detail">住苏丹艾哈迈德/老城区，景点集中步行可达。提前确认酒店深夜入住政策</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿推荐（老城2晚，8/8-8/9）：</strong>Kalyon Hotel Istanbul 卡里永酒店（素材实测⭐⭐⭐，近蓝色清真寺）；或皇冠假日酒店老城店。8月旺季务必提前预订，选含早餐、有屋顶露台的房型。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D1 Aug 9 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--istanbul)">
+        <span class="d-label">DAY</span><span class="d-date">8/9</span>
+      </div>
+      <div class="day-info">
+        <h3>伊斯坦布尔 · 老城经典（周日版）</h3>
+        <div class="day-meta">周日 · 圣索菲亚 → 蓝色清真寺 → 地下水宫 → 香料市场 → 海峡日落渡轮</div>
+        <div class="day-tags"><span class="tag tag-culture">历史文化</span><span class="tag tag-culture">海峡日落</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>周日调整说明：</strong>大巴扎周日闭市，今天不安排购物，改逛全部正常开放的历史景点；大巴扎挪到明天（周一）上午8:30开门即入，逛完直接去萨比哈机场。</div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">08:30</div>
+            <div class="tl-text">
+              <strong>圣索菲亚大教堂 Ayasofya（排队）</strong>
+              <div class="tl-detail">8:30到售票亭排队（仅现场购票，25欧），9:00开门即入。外国人走专用入口。二楼画廊视角最佳，参观约1.5小时</div>
+              <div class="tl-hours">🕐 9:00-19:30 · 周五12:30-14:30游客禁入（今天周日无碍）· 现场购票</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">10:30</div>
+            <div class="tl-text">
+              <strong>蓝色清真寺 Sultanahmet Camii</strong>
+              <div class="tl-detail">免费，就在对面广场。六座宣礼塔+两万多块蓝色伊兹尼克瓷砖。10:30-11:30正好错开13:15的午间礼拜关闭</div>
+              <div class="tl-hours">🕐 约8:30-18:00 · 每日礼拜各关约90分钟 · 免费无需预约 · 脱鞋、女士包头</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">12:00</div>
+            <div class="tl-text">
+              <strong>午餐：Seven Hills Restaurant</strong>
+              <div class="tl-detail">素材推荐的海鸥观景台餐厅，屋顶露台同时看圣索菲亚和蓝色清真寺，边吃烤鱼边喂海鸥</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">13:30</div>
+            <div class="tl-text">
+              <strong>地下水宫 Yerebatan Sarnıcı</strong>
+              <div class="tl-detail">《但丁密码》取景地，336根石柱倒映浅水，美杜莎柱基必看。<strong>用提前买好的电子票扫码入场，免排队</strong></div>
+              <div class="tl-hours">🕐 9:00-19:00（夏季夜间场至22:00）· 约600TL · 已建议网上购票</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">15:00</div>
+            <div class="tl-text">
+              <strong>香料市场 Mısır Çarşısı</strong>
+              <div class="tl-detail">周日正常开放。买土耳其软糖、红茶、香料（比景区便宜），顺路逛到加拉塔大桥</div>
+              <div class="tl-hours">🕐 约8:00-19:00 · 每日开放 · 免费</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">17:00</div>
+            <div class="tl-text">
+              <strong>博斯普鲁斯海峡日落渡轮</strong>
+              <div class="tl-detail">Eminönü码头刷交通卡上公交船（约25TL/人），海上看两岸奥斯曼木屋与宫殿。8月日落约20:00，17:00-19:00正是金色光线</div>
+              <div class="tl-hours">🕐 每日班次密集 · 刷Istanbulkart · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">19:30</div>
+            <div class="tl-text">
+              <strong>晚餐：KABURGACI SALMAN</strong>
+              <div class="tl-detail">素材强推的老城烤肉店，羊排烤肉（Kaburga）是招牌，人均约300-400TL</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>防骗提醒：</strong>擦鞋匠故意掉刷子别捡；餐厅一定看土耳其语菜单，英文菜单通常更贵；主动拉你进店的餐厅直接走人。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D2 Aug 10 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--istanbul)">
+        <span class="d-label">DAY</span><span class="d-date">8/10</span>
+      </div>
+      <div class="day-info">
+        <h3>大巴扎（周一上午）→ 16:30萨比哈机场飞达拉曼 → 费特希耶</h3>
+        <div class="day-meta">周一 · 大巴扎 → 午餐 → 赴SAW机场 → 16:30起飞 → 傍晚到费特希耶</div>
+        <div class="day-tags"><span class="tag tag-culture">购物</span><span class="tag tag-flight">已订航班</span><span class="tag tag-drive">取车</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>今天是萨比哈机场SAW（亚洲区）：</strong>SAW在博斯普鲁斯海峡对面，从老城/大巴扎过去约1-1.5小时（高峰期更久）。16:30起飞，<strong>务必13:00前从老城出发</strong>，14:30前到机场。可用Uber/Bitaksi，或Havabus（塔克西姆/卡德柯伊发车）。</div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">08:30</div>
+            <div class="tl-text">
+              <strong>大巴扎 Grand Bazaar（周一开门即入）</strong>
+              <div class="tl-detail">退房寄存行李后轻装前往。周一8:30开门人少，4000+店铺、61条街道，皮具、灯饰、陶瓷、地毯慢慢挑，狠砍价（对半砍起）。时间充裕，可以逛到11点</div>
+              <div class="tl-hours">🕐 周一至周六8:30-19:00 · <span style="color:#e74c3c">周日闭市</span> · 免费 · 今天周一正常开</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">11:00</div>
+            <div class="tl-text">
+              <strong>加拉太塔街区 / Karaköy漫步（可选）</strong>
+              <div class="tl-detail">大巴扎出来可顺路到加拉太塔下街区拍照（不上塔），独立设计小店、咖啡馆密集。若担心赶机场，可跳过直接午餐</div>
+              <div class="tl-hours">🕐 街区全天免费 · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">12:00</div>
+            <div class="tl-text">
+              <strong>午餐 + 取行李</strong>
+              <div class="tl-detail">Karaköy鱼饼店 Meşhur Balıkçı Mehmet Usta（素材推荐，约250TL）或大巴扎附近家常馆。吃完回酒店取行李</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">13:00</div>
+            <div class="tl-text">
+              <strong>出发前往萨比哈机场SAW</strong>
+              <div class="tl-detail">老城→SAW约1-1.5小时。预留充足时间，14:30前到机场。国内航班提前1.5-2小时到即可</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">16:30</div>
+            <div class="tl-text">
+              <strong>飞往达拉曼（DLM）✅ 已订票</strong>
+              <div class="tl-detail">SAW → DLM约1h15min。落地达拉曼约17:45</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">18:30</div>
+            <div class="tl-text">
+              <strong>达拉曼机场取租车</strong>
+              <div class="tl-detail">推荐Cizgi租车（素材首选，机场有柜台）。本次为<strong>达拉曼取车、安塔利亚还车</strong>的异地还车（4天），订车时确认异地还车费（约1000-2000TL）。取车360°拍照录像记录车况</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">19:15</div>
+            <div class="tl-text">
+              <strong>自驾：达拉曼 → 费特希耶（约45km/45min）→ 入住</strong>
+              <div class="tl-detail">路况好，天黑前抵达。办理入住放行李</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">20:00</div>
+            <div class="tl-text">
+              <strong>费特希耶鱼市晚餐 + 早睡</strong>
+              <div class="tl-detail">Fethiye Fish Market：自己挑海鲜，旁边餐厅付加工费烹饪（若太晚就简单吃）。明早7:00滑翔伞酒店接，今晚别熬夜</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿（费特希耶1晚，8/10）：</strong>Tonoz 托诺兹海滩酒店（素材实测⭐⭐⭐，近Oludeniz）；或住市区码头附近，方便次日滑翔伞接送。</div>
+        </div>
+        <div class="tip-box info">
+          <span class="tip-icon">💡</span>
+          <div><strong>滑翔伞（已提前订）：</strong>订的是明早（8/11）最早批次（7:00-8:00酒店接），争取11点前结束。约600-1200TL/人（含拍摄+200TL），推荐Deep Blue（素材提及）/Gravity/Reaction。从巴巴山1900m起飞，30-45分钟，无需经验。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3 Aug 11 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--fethiye)">
+        <span class="d-label">DAY</span><span class="d-date">8/11</span>
+      </div>
+      <div class="day-info">
+        <h3>费特希耶滑翔伞 → 自驾到卡尔坎 → Mahal日落晚餐（太太必去）</h3>
+        <div class="day-meta">周二 · 清晨滑翔伞 → 午餐 → 下午峡谷/鬼城/海滩 → 傍晚到卡尔坎 → Mahal日落晚餐</div>
+        <div class="day-tags"><span class="tag tag-paraglide">滑翔伞</span><span class="tag tag-heart">太太必去</span><span class="tag tag-drive">D400自驾</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">07:00</div>
+            <div class="tl-text">
+              <strong>滑翔伞飞行 🪂（最早批次）</strong>
+              <div class="tl-detail">酒店接 → 上山40分钟 → 从1900m巴巴山一跃而下，俯瞰Oludeniz泻湖全景，30-45分钟。降落海滩约10:30-11:00</div>
+              <div class="tl-hours">🕐 清晨批次 · 已提前1-2周预订 · 含保险</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">11:30</div>
+            <div class="tl-text">
+              <strong>午餐 + 休整</strong>
+              <div class="tl-detail">Oludeniz海边或回费特希耶市区简单吃，喝杯土耳其红茶缓一缓</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">13:00</div>
+            <div class="tl-text">
+              <strong>下午三选一（控制在2-2.5小时，别误了晚上Mahal）</strong>
+              <div class="tl-detail">
+                选项A <strong>萨克勒肯特峡谷 Saklıkent</strong>：自驾约1h，18km峡谷涉水徒步，备溯溪鞋；<br>
+                选项B <strong>卡亚寇伊鬼城 Kayaköy</strong>：自驾30min，废弃希腊石屋村，拍照出片；<br>
+                选项C <strong>死海躺平</strong>：Oludeniz泻湖游泳晒太阳，最省力
+              </div>
+              <div class="tl-hours">🕐 峡谷约8:00-18:00约150TL · 鬼城全天约100TL · 均无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">16:00</div>
+            <div class="tl-text">
+              <strong>自驾：费特希耶 → 卡尔坎（约80km/1h45min）</strong>
+              <div class="tl-detail">沿D400海岸线东行，一路山海风光。傍晚抵达卡尔坎</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">17:45</div>
+            <div class="tl-text">
+              <strong>抵达卡尔坎 Kalkan → Check-in</strong>
+              <div class="tl-detail">D400上的地中海明珠，鹅卵石小巷依山而建、白色小屋层层叠叠、三角梅盛放。放行李后到海港漫步，找好今晚餐厅位置</div>
+              <div class="tl-hours">🕐 老城/海港为开放区域，全天免费 · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">19:30</div>
+            <div class="tl-text">
+              <strong>Mahal Beach Club 日落晚餐（太太点名 ❤）</strong>
+              <div class="tl-detail">卡尔坎的海滨海滩俱乐部+餐厅，白天晒太阳、晚上吃海鲜看日落。<strong>8月日落约20:00，19:00-19:30到店占好西向海景座位</strong>，先喝杯开胃酒看夕阳沉入地中海，再用地中海海鲜正餐收尾。出发前已电话/邮件订位并注明要日落时段</div>
+              <div class="tl-hours">🕐 白天海滩→晚上海滨餐厅 · 已建议提前订位（注明日落时段）</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿（卡尔坎1晚，8/11）：</strong>选老城/海港区的海景精品酒店或别墅（Kalamar Bay一带海景好）。订房确认：海景露台、是否含早餐、停车是否方便（自驾）。卡尔坎酒店多为山坡villa，行李多的话问清有无搬运协助。</div>
+        </div>
+        <div class="tip-box info">
+          <span class="tip-icon">💡</span>
+          <div><strong>节奏提示：</strong>今天下午的活动务必控制在15:30前结束、16:00准时出发，才能从容到卡尔坎、梳洗后赶上Mahal的日落黄金时段。这是太太的点名行程，时间向它倾斜。</div>
+        </div>
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>自驾提醒：</strong>中国驾照+翻译认证件；D400弯道多限速50-70，测速摄像头多；半箱油就加；8月午后35°C+车内备水。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D4 Aug 12 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--fethiye)">
+        <span class="d-label">DAY</span><span class="d-date">8/12</span>
+      </div>
+      <div class="day-info">
+        <h3>卡尔坎上午 → 卡普塔斯海滩 → 卡什Villa Hotel Tamara</h3>
+        <div class="day-meta">周三 · 卡尔坎老城/帕塔拉 → 卡普塔斯海滩 → 卡什入住 → 古城剧场日落</div>
+        <div class="day-tags"><span class="tag tag-heart">太太必去</span><span class="tag tag-drive">D400自驾</span><span class="tag tag-beach">海滩</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">09:00</div>
+            <div class="tl-text">
+              <strong>卡尔坎早餐 + 老城再逛</strong>
+              <div class="tl-detail">昨晚天黑到的，今天白天好好看看这座精致小城：鹅卵石小巷、精品店、海港咖啡馆，节奏放慢</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">10:00</div>
+            <div class="tl-text">
+              <strong>加分项：帕塔拉海滩 Patara（可选）</strong>
+              <div class="tl-detail">卡尔坎以东15km，18km长的金色沙滩+古城遗迹，人少景美，是土耳其最长海滩。时间富余就去玩1-1.5小时</div>
+              <div class="tl-hours">🕐 约8:00-19:00 · 约150TL（含古城）· 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">11:30</div>
+            <div class="tl-text">
+              <strong>自驾：卡尔坎 → 卡普塔斯（20km/20min）</strong>
+              <div class="tl-detail">继续沿D400东行</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">12:00</div>
+            <div class="tl-text">
+              <strong>卡普塔斯海滩 Kaputaş Plajı</strong>
+              <div class="tl-detail">D400必停！峡谷入海口的绿松石色海滩，187级台阶下滩。正午阳光直射海水最透，游泳拍照约1.5-2小时</div>
+              <div class="tl-hours">🕐 全天（公共海滩）· 免费，停车约50TL · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">14:00</div>
+            <div class="tl-text">
+              <strong>自驾：卡普塔斯 → 卡什（28km/30min）→ Check-in Villa Hotel Tamara</strong>
+              <div class="tl-detail">太太点名的Villa Hotel Tamara（8月旺季务必提前订）。放行李后午餐（镇上家常馆或酒店）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">16:30</div>
+            <div class="tl-text">
+              <strong>卡什老城/海港漫步</strong>
+              <div class="tl-detail">卡什比卡尔坎更质朴宁静，白色小巷、三角梅、小渔船。可问酒店有无短程海湾游船（沉没城市方向）</div>
+              <div class="tl-hours">🕐 开放区域全天免费 · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">19:30</div>
+            <div class="tl-text">
+              <strong>安提弗洛斯古城剧场看日落</strong>
+              <div class="tl-detail">镇边山坡的免费露天遗迹，坐在两千年的石阶上看太阳沉入海湾，很浪漫</div>
+              <div class="tl-hours">🕐 全天免费 · 日落约20:00</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">20:30</div>
+            <div class="tl-text">
+              <strong>卡什晚餐</strong>
+              <div class="tl-detail">Mussakka Restaurant（素材推荐家常菜）或海边大排档，烤海鲈鱼+Meze冷盘</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿（卡什1晚，8/12）：Villa Hotel Tamara</strong>——太太指定，8月是卡什最旺的月份，<strong>请尽快预订</strong>。订房时确认：是否有海景房/露台、是否含早餐、停车是否方便（自驾）。</div>
+        </div>
+        <div class="tip-box info">
+          <span class="tip-icon">💡</span>
+          <div><strong>今天是全程最松弛的自驾日：</strong>纯车程不到1小时（卡尔坎→卡普塔斯→卡什共约50km），大把时间留给海滩和小镇。睡到自然醒，慢慢开、慢慢玩。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D5 Aug 13 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--antalya)">
+        <span class="d-label">DAY</span><span class="d-date">8/13</span>
+      </div>
+      <div class="day-info">
+        <h3>卡什上午 → 安塔利亚 → 20:00飞卡帕多奇亚（已订票）</h3>
+        <div class="day-meta">周四 · 卡什悠闲上午 → 自驾3h → 安塔利亚老城 → 还车 → 20:00夜航飞卡帕</div>
+        <div class="day-tags"><span class="tag tag-drive">自驾190km</span><span class="tag tag-flight">已订航班</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">09:00</div>
+            <div class="tl-text">
+              <strong>Villa Hotel Tamara早餐 + 卡什清晨</strong>
+              <div class="tl-detail">码头边喝杯土耳其红茶，逛逛晨光中的白色小巷</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">10:30</div>
+            <div class="tl-text">
+              <strong>卡什自由上午</strong>
+              <div class="tl-detail">古城剧场二刷、海港发呆，或报名短程游船（沉没城市/海湾浮潜，约2-3小时）。今晚航班晚，上午可以玩透</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">12:30</div>
+            <div class="tl-text">
+              <strong>午餐后出发</strong>
+              <div class="tl-detail">镇上简单午餐，加满油</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">13:00</div>
+            <div class="tl-text">
+              <strong>自驾：卡什 → 安塔利亚（约190km/3h）</strong>
+              <div class="tl-detail">沿地中海东行，沿途Demre（圣诞老人故乡，时间充裕可绕道）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">16:00</div>
+            <div class="tl-text">
+              <strong>抵达安塔利亚 → 还车</strong>
+              <div class="tl-detail">机场或市区网点还车（异地还车，确认油量和车况，拍照留证）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">16:30</div>
+            <div class="tl-text">
+              <strong>安塔利亚老城 Kaleiçi（精华速逛）</strong>
+              <div class="tl-detail">哈德良门、钟楼、老码头（Yat Limanı）——素材说这里"热情开放"。1-1.5小时逛完精华</div>
+              <div class="tl-hours">🕐 开放区域全天免费 · 无需预约</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">18:00</div>
+            <div class="tl-text">
+              <strong>早晚餐：PASABEY / 老城庭院餐厅</strong>
+              <div class="tl-detail">素材推荐PASABEY。今晚航班20:00，晚餐稍微提前，吃完从容赴机场</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">18:45</div>
+            <div class="tl-text">
+              <strong>前往AYT机场（已网上值机）</strong>
+              <div class="tl-detail">老城→AYT约30-40分钟。<strong>提前网上值机</strong>，19:00-19:15到机场即可（国内航班）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">20:00</div>
+            <div class="tl-text">
+              <strong>飞往开塞利（ASR）✅ 已订票</strong>
+              <div class="tl-detail">安塔利亚AYT → 开塞利ASR，约1h-1h15min，落地约21:15</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">22:30</div>
+            <div class="tl-text">
+              <strong>抵达卡帕多奇亚 → 洞穴酒店Check-in</strong>
+              <div class="tl-detail">酒店接机（提前约好）。<strong>和前台确认明早"看热气球"的最佳屋顶位置和时间（5:45-7:30）</strong>，然后早睡</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿（卡帕1晚，8/13）：</strong>Royal Stone Houses Göreme 皇家石屋酒店（素材实测⭐⭐⭐⭐⭐）；Sacred Mansion 哥乐美亚酒店（⭐⭐⭐⭐⭐）。<strong>只看气球的话酒店选择比飞行更重要</strong>——订带"面向山谷屋顶露台"的房型，订房时直接问："屋顶能看热气球吗？"</div>
+        </div>
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>转场日时间管理：</strong>20:00航班不算早，但还车+老城+晚餐+赴机场要环环相扣。建议<strong>提前网上值机</strong>、行李从简；还车尽量在16:00-16:30完成，给老城和晚餐留足时间，18:45准时赴机场。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D6 Aug 14 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--cappadocia)">
+        <span class="d-label">DAY</span><span class="d-date">8/14</span>
+      </div>
+      <div class="day-info">
+        <h3>卡帕多奇亚 · 看热气球日出 → 飞回伊斯坦布尔</h3>
+        <div class="day-meta">周五 · 屋顶看气球日出 → 格雷梅露天博物馆 → 乌奇萨城堡 → 下午飞伊斯坦布尔</div>
+        <div class="day-tags"><span class="tag tag-balloon">看热气球</span><span class="tag tag-culture">世界遗产</span><span class="tag tag-flight">待订航班</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>本程航班尚未订：</strong>卡帕多奇亚ASR → 伊斯坦布尔，选<strong>16:30-18:00起飞</strong>的班次（约1h20min），尽早订票。这程直接决定能否赶上8/15的14:20国际航班，是眼下最该落实的一项。</div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">05:30</div>
+            <div class="tl-text">
+              <strong>屋顶看热气球日出 🎈（只看不坐，免费）</strong>
+              <div class="tl-detail">披件外套（清晨仅15°C）上屋顶露台，端杯红茶/咖啡。8月日出约06:10，<strong>5:45-7:30</strong>最佳——上百只热气球升空掠过精灵烟囱，晨光把岩壁染成金色。不坐气球=不用4点集合、无退改风险，纯享受。带手机支架拍照</div>
+              <div class="tl-hours">🕐 日出前后5:45-7:30 · 免费 · 无需预约（选对酒店即可）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">08:00</div>
+            <div class="tl-text">
+              <strong>洞穴酒店早餐</strong>
+              <div class="tl-detail">土耳其式早餐很丰盛，在露台边吃边看收尾的气球</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">09:30</div>
+            <div class="tl-text">
+              <strong>格雷梅露天博物馆 Göreme Open-Air Museum</strong>
+              <div class="tl-detail">UNESCO世界遗产，岩石教堂群+拜占庭壁画，黑暗教堂壁画最精华（另购票）。约1.5-2小时</div>
+              <div class="tl-hours">🕐 8:00-19:00 · 约15-20欧，黑暗教堂+5欧 · 现场或线上购票</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">12:00</div>
+            <div class="tl-text">
+              <strong>午餐：Cappadocian Cuisine / Sedet Restaurant</strong>
+              <div class="tl-detail">素材推荐：陶土烤肉串（Testi Kebab）当面敲开陶罐，仪式感满分；Sedet现烤面包"yyds"</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">13:30</div>
+            <div class="tl-text">
+              <strong>乌奇萨城堡 Uçhisar Kalesi</strong>
+              <div class="tl-detail">卡帕最高点，登顶360°俯瞰精灵烟囱谷地。时间紧可只登顶拍照（约1小时）</div>
+              <div class="tl-hours">🕐 约8:00-日落 · 约2-3欧 · 现场购票</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">15:00</div>
+            <div class="tl-text">
+              <strong>前往开塞利机场</strong>
+              <div class="tl-detail">车程约1小时。乘16:30-18:00起飞的航班回伊斯坦布尔（约1h20min）</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">19:30</div>
+            <div class="tl-text">
+              <strong>抵达伊斯坦布尔 → 入住 + 告别晚餐</strong>
+              <div class="tl-detail">落地后回老城酒店。最后一晚推荐 Seven Hills 或加拉塔大桥旁屋顶餐厅，再看一次清真寺夜景收尾</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box info">
+          <span class="tip-icon">💡</span>
+          <div><strong>看气球小贴士：</strong>① 能否起飞由当天清晨风速决定，前台前一晚一般知道大概；② 若8/14清晨停飞（8月概率约10%），就当睡个懒觉，不影响后续——这是"只看不坐"的最大好处；③ 格雷梅"Aydınlı观景台"和乌奇萨城堡也是公共观球点，酒店屋顶视角不佳可临时转移。</div>
+        </div>
+        <div class="tip-box stay">
+          <span class="tip-icon">🏨</span>
+          <div><strong>住宿（伊斯坦布尔最后1晚，8/14）：</strong>老城 Kalyon Hotel 或塔克西姆/新欧洲区。次日14:20航班从IST起飞，老城出发约1小时到IST，10:00-10:30动身即可。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D7 Aug 15 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="background:var(--istanbul)">
+        <span class="d-label">DAY</span><span class="d-date">8/15</span>
+      </div>
+      <div class="day-info">
+        <h3>伊斯坦布尔 · 从容半日 → 14:20 返程</h3>
+        <div class="day-meta">周六 · 睡到自然醒 → 早餐/补逛 → 11:20前到机场 → 14:20国际航班</div>
+        <div class="day-tags"><span class="tag tag-culture">购物</span><span class="tag tag-flight">国际航班</span></div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">08:30</div>
+            <div class="tl-text">
+              <strong>睡到自然醒 + 酒店早餐</strong>
+              <div class="tl-detail">前几天节奏较紧，最后一天轻松一点</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">09:30</div>
+            <div class="tl-text">
+              <strong>查漏补缺（选一个，控制在1小时内）</strong>
+              <div class="tl-detail">选项A：独立大道补购物/伴手礼（周六大巴扎也开，但时间不够不推荐）；选项B：老城最后漫步，再看一眼蓝色清真寺；选项C：酒店附近咖啡馆坐坐。别安排远的景点</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">10:15</div>
+            <div class="tl-text">
+              <strong>退房 → 前往IST机场</strong>
+              <div class="tl-detail">老城→IST约1小时（Havaist大巴或Uber）。14:20航班，<strong>11:20前到机场</strong>。退税柜台在值机区附近，先办退税再托运</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">11:30</div>
+            <div class="tl-text">
+              <strong>机场值机 + 退税 + 免税店</strong>
+              <div class="tl-detail">IST机场很大，安检+步行到登机口留足时间。免税店补货：软糖、红茶、橄榄油皂、蓝眼睛饰品。MADO冰淇淋别错过</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-time">14:20</div>
+            <div class="tl-text">
+              <strong>国际航班返程 ✈️</strong>
+              <div class="tl-detail">土耳其航空休息室口碑好（商务舱/龙腾卡可用）。旅程结束，İyi yolculuklar!</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-box warn">
+          <span class="tip-icon">⚠️</span>
+          <div><strong>返程日时间管理：</strong>14:20是起飞时间，建议11:20到IST（提前3小时）。值机柜台起飞前1小时关闭、登机口起飞前20分钟关闭。住老城最晚10:30出发；担心交通可8/14晚改住机场附近酒店。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSPORT -->
+<div class="section" id="transport">
+  <div class="section-title"><span class="icon">🚌</span> 交通指南</div>
+  <div class="section-desc">城际以飞机为主，达拉曼→安塔利亚段自驾（含D400），市内公共交通+打车软件</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>✈️ 内陆航班（3程）</h4>
+      <ul>
+        <li><strong>✅已订</strong> 伊斯坦布尔萨比哈SAW → 达拉曼DLM：8/10 16:30起飞，约1h15min</li>
+        <li><strong>✅已订</strong> 安塔利亚AYT → 开塞利ASR：8/13 20:00起飞，约1h-1h15min（当晚直达卡帕）</li>
+        <li><strong>⚠️待订</strong> 卡帕多奇亚ASR → 伊斯坦布尔：8/14选16:30-18:00班次，约1h20min，500-900TL/人，<strong>尽早订</strong></li>
+        <li>航司推荐：土耳其航空（含行李餐食）、飞马Pegasus（廉航注意行李额，多飞SAW）、太阳快运SunExpress</li>
+        <li>提前2-4周在官网/App买票最便宜</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🚗 租车自驾（4天 · 达拉曼取/安塔利亚还）</h4>
+      <ul>
+        <li>租车公司：Cizgi（素材首选，本地口碑好，达拉曼机场有柜台）、Hertz、AVIS、Enterprise</li>
+        <li>路线：达拉曼机场 → 费特希耶 → 卡尔坎 → 卡普塔斯 → 卡什 → 安塔利亚，全程约400km</li>
+        <li><strong>异地还车费约1000-2000TL</strong>（达拉曼取、安塔利亚还），订车时确认</li>
+        <li>证件：中国驾照原件 + 翻译认证件（或国际驾照IDP）</li>
+        <li>保险：买全险（约150-300TL/天），取车时360°拍照录像记录车况</li>
+        <li>油费：全程约400km，油费约1000-1300TL（8月油价约45TL/L）</li>
+        <li>导航用Google Maps离线地图，提前下载土耳其区域</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🚇 市内交通</h4>
+      <ul>
+        <li>伊斯坦布尔：买Istanbul交通卡（地铁站可买，多人共用一张），公交/地铁/渡轮/缆车通用</li>
+        <li><strong>萨比哈机场SAW接驳</strong>：Havabus（塔克西姆/卡德柯伊发车）或Uber/Bitaksi；老城→SAW约1-1.5h，赶飞机留足时间</li>
+        <li>打车只用Uber或Bitaksi（本地打车App），路边拦出租车容易被绕路</li>
+        <li>安塔利亚：复古观光电车穿老城，轻轨直达机场</li>
+        <li>机场大巴：Havaist（伊斯坦布尔IST）、Havaş（达拉曼/安塔利亚），便宜可靠</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🚌 城际大巴（备选）</h4>
+      <ul>
+        <li>大巴体验好（含零食饮料WiFi），但耗时长：达拉曼→费特希耶约1.5h</li>
+        <li>购票：obilet App 或长途车站现场买</li>
+        <li>海边小城之间（卡尔坎/卡什）有共享小巴Dolmuş，随停随走，几十TL</li>
+        <li>本行程自驾更灵活，大巴仅作备选/体验</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD -->
+<div class="section" id="food">
+  <div class="section-title"><span class="icon">🍽️</span> 美食地图</div>
+  <div class="section-desc">综合素材实测推荐 + 各城市特色</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>📍 伊斯坦布尔</h4>
+      <ul>
+        <li><strong>KABURGACI SALMAN</strong> — 老城烤肉店，素材强推，羊排Kaburga是招牌</li>
+        <li><strong>Meşhur Balıkçı Mehmet Usta</strong>（Karaköy）— 鱼饼三明治，约250TL，"就该他火"</li>
+        <li><strong>Seven Hills Restaurant</strong> — 海鸥观景台，屋顶看双清真寺日落（适合告别晚餐）</li>
+        <li><strong>Nusr-Et Steakhouse</strong> — 撒盐哥，大巴扎附近，网红体验</li>
+        <li><strong>MADO</strong> — 土耳其冰淇淋（刀叉冰淇淋表演），机场也有</li>
+        <li>街头必尝：烤栗子、Simit芝麻圈、鲜榨石榴汁、Kumpir烤土豆</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📍 费特希耶 / 卡尔坎 / 卡什 / 安塔利亚</h4>
+      <ul>
+        <li><strong>费特希耶鱼市</strong> — 自选海鲜+餐厅代加工，体验独特（8/10晚）</li>
+        <li><strong>Corbacım Fethiye</strong> — 扁豆汤Çorba，暖胃</li>
+        <li><strong>Mahal Beach Club</strong>（卡尔坎）— <strong>太太点名 ❤ 8/11晚日落晚餐</strong>，海滨餐厅看夕阳沉入地中海+海鲜正餐（出发前订位，注明日落时段）</li>
+        <li><strong>卡尔坎海港餐厅</strong> — 海景+新鲜地中海海鲜，傍晚氛围最佳</li>
+        <li><strong>Mussakka Restaurant</strong>（卡什）— 土耳其家常炖菜（素材推荐）</li>
+        <li><strong>PASABEY</strong>（安塔利亚）— 素材推荐</li>
+        <li>沿海必尝：烤海鲈鱼、Meze冷盘拼盘、Ayran酸奶饮</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📍 卡帕多奇亚</h4>
+      <ul>
+        <li><strong>Cappadocian Cuisine</strong> — 陶土烤肉串Testi Kebab，当面敲开陶罐</li>
+        <li><strong>Sedet Restaurant</strong> — 现烤面包"yyds"、烤肉串</li>
+        <li><strong>Family Cave Restaurant</strong> — 洞穴餐厅，土耳其风味烤牛肉</li>
+        <li><strong>Restoran Malaysia</strong> — 想念亚洲口味时的选择，有炒饭</li>
+        <li>特色体验：洞穴酒店露台早餐 + 土耳其红茶</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>💡 点餐省钱防坑</h4>
+      <ul>
+        <li>一定要土耳其语菜单，英文菜单通常更贵</li>
+        <li>结账前检查账单，多收服务费是违法的，可直接拒绝</li>
+        <li>桌上的水要钱——不想付就让服务员提前拿走（别开瓶）</li>
+        <li>送的小菜问清是否免费</li>
+        <li>小费非强制，满意可留5-10%硬币在桌上</li>
+        <li>饮料去明码标价的超市买（BİM/A101/Şok/Migros）</li>
+        <li>主动拉你进店的餐厅，基本可以直接走人</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MONEY -->
+<div class="section" id="money">
+  <div class="section-title"><span class="icon">💰</span> 金钱与支付</div>
+  <div class="section-desc">2026年参考汇率：1 CNY ≈ 5.5-6 TL（里拉持续贬值，出发前查实时汇率）</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>💳 取现与刷卡</h4>
+      <ul>
+        <li><strong>Ziraat银行ATM取里拉免手续费</strong>（银联卡），其他银行可能收3-5%</li>
+        <li>带芯片的信用卡（Visa/Master）大部分商户可刷，但刷卡可能有手续费</li>
+        <li><strong>现金有折扣</strong>——很多店现金价比刷卡价低，小额消费备现金</li>
+        <li>建议每天准备约1000TL现金/人（素材建议），大额消费刷卡</li>
+        <li>整体预算参考：约300欧元/天/人（含住宿餐饮活动）</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🧾 退税</h4>
+      <ul>
+        <li>同一商店单日消费满约1000TL可申请退税（约8-18%）</li>
+        <li>购物时索要退税单（Tax Free Form）</li>
+        <li>机场流程：值机前先去海关盖章（商品可能需要出示）→ 托运 → 退税柜台领钱</li>
+        <li>IST机场退税柜台在出发层，支持退现金（扣手续费）或退卡</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📱 电话卡与网络</h4>
+      <ul>
+        <li>提前网上买eSIM或实体卡（Turkcell/Vodafone），机场也有售但贵</li>
+        <li>推荐：出发前在淘宝/官网买好土耳其eSIM，落地即用</li>
+        <li>Google Maps、WhatsApp、Uber在土耳其都好用</li>
+        <li>酒店和餐厅WiFi普遍免费</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>💡 省钱技巧</h4>
+      <ul>
+        <li>景点通票：伊斯坦布尔博物馆通票（Museum Pass）约105欧，含圣索菲亚/地下水宫等，排队少</li>
+        <li>当地超市（BİM/A101）买水/零食/特产，比景区便宜一半以上</li>
+        <li>大巴扎砍价从对半开始，香料市场相对实在</li>
+        <li>滑翔伞提前网上订比现场便宜，且有保障；看热气球免费（酒店屋顶即可）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SAFETY -->
+<div class="section" id="safety">
+  <div class="section-title"><span class="icon">🛡️</span> 安全与防骗</div>
+  <div class="section-desc">土耳其整体治安不错，但旅游城市套路多，记住以下要点</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>🚫 常见骗局</h4>
+      <ul>
+        <li><strong>高价擦鞋</strong>：擦鞋匠"不小心"掉刷子，捡了就要高价擦鞋</li>
+        <li><strong>热心指路</strong>：主动带你走，最后把你领进地毯商店拿回扣</li>
+        <li><strong>地铁卡骗局</strong>：主动帮你充值交通卡，实际是给他自己的卡充</li>
+        <li><strong>出租车绕路</strong>：不打表/绕远路——只用Uber/Bitaksi</li>
+        <li><strong>餐厅加菜</strong>：主动上的小菜/面包可能收费，问清"free?"</li>
+        <li><strong>人流挤散</strong>：大巴扎/电车上注意小偷，财不外露，背包放前面</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>✅ 安全守则</h4>
+      <ul>
+        <li>不要把交通卡/手机交给陌生人操作</li>
+        <li>没求助却主动帮忙的人，保持警惕</li>
+        <li>觉得不对劲，直接走人/报警（土耳其报警电话155）</li>
+        <li>在公共场所需要帮忙，找女学生或带孩子的家庭最靠谱</li>
+        <li>晚上避免去偏僻街区，伊斯坦布尔老城夜晚主干道是安全的</li>
+        <li>自驾：锁好车门，贵重物品不放明处，停车场选有人看管的</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🏥 健康与保险</h4>
+      <ul>
+        <li>8月高温35°C+：防晒霜SPF50+、墨镜、帽子、随身水壶</li>
+        <li>D400沿海午后干热，海滩/户外及时补水，正午避免长时间暴晒</li>
+        <li>萨克勒肯特峡谷涉水徒步，备溯溪鞋/防滑凉鞋，注意脚下湿滑</li>
+        <li>自来水不能直饮，买瓶装水</li>
+        <li>滑翔伞公司含保险，确认保单再上</li>
+        <li>建议买境外旅行险（含医疗+航班延误+行李丢失+行程变更）</li>
+        <li>肠胃敏感者：少吃生冷，备好肠胃药</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📄 入境与证件</h4>
+      <ul>
+        <li>中国护照免签入境土耳其（30天），带好护照+返程机票行程单</li>
+        <li>打印纸质版返程机票（8/15 14:20）、酒店订单（入境可能抽查）</li>
+        <li>护照复印件和电子版备份，与原件分开放</li>
+        <li>欧标转接头（两圆孔），土耳其电压230V</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PACKING -->
+<div class="section" id="packing">
+  <div class="section-title"><span class="icon">🎒</span> 行前清单</div>
+  <div class="section-desc">点击勾选已准备好的项目</div>
+  <div class="checklist">
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 护照（有效期6个月以上）+ 复印件</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 打印：返程机票（8/15 14:20）、全程酒店订单</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 驾照原件 + 翻译认证件（自驾用）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 银联卡（Ziraat取现）+ Visa/Master信用卡</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 土耳其eSIM/电话卡（提前网上买）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 欧标转换插头（两圆孔）+ 充电宝</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 防晒霜SPF50+ / 墨镜 / 遮阳帽</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 薄外套（卡帕清晨15°C屋顶看气球用）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 泳衣 / 速干衣 / 沙滩鞋（海滩用）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 溯溪鞋/防滑凉鞋（萨克勒肯特峡谷用）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 舒适步行鞋（老城石板路+海滩）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 女士头巾（进清真寺备用）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 手机支架/三脚架（拍气球日出）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 肠胃药 / 晕车药 / 创可贴</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 境外旅行保险（医疗+延误+行程变更）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> ✅已订：8/10 16:30 SAW→达拉曼机票</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> ✅已订：8/13 20:00 安塔利亚→开塞利机票</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> ⚠️待订：8/14 卡帕→伊斯坦布尔机票（16:30-18:00班次）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 预订：滑翔伞（8/11最早批次，Deep Blue/Gravity）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 预订：租车（Cizgi，达拉曼取/安塔利亚还，4天）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 预订：Villa Hotel Tamara（卡什，8月旺季尽快订）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 预订：卡尔坎海景酒店（8/11，近海港）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 预订：费特希耶酒店（8/10）+ 卡帕洞穴酒店（确认屋顶能看热气球）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 订位：Mahal Beach Club（卡尔坎）8/11日落晚餐，注明日落时段</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 网上购票：地下水宫电子票（免排队）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 下载：Google Maps离线地图（土耳其）</label>
+    <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done')"> 下载：Uber / Bitaksi / obilet App</label>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="section" id="budget">
+  <div class="section-title"><span class="icon">🧮</span> 预算估算（2人合计）</div>
+  <div class="section-desc">按舒适型标准估算，实际以出行时价格为准（1 CNY ≈ 5.5 TL）。热气球只看不坐，无飞行费用。</div>
+  <table class="budget-table">
+    <tr><th>项目</th><th>明细</th><th>估算费用（2人）</th></tr>
+    <tr><td>国际机票</td><td>往返伊斯坦布尔（国内出发）</td><td>¥8,000 - 14,000</td></tr>
+    <tr><td>内陆航班 ×3</td><td>SAW→达拉曼（已订）/ 安塔利亚→卡帕（已订）/ 卡帕→IST（待订）</td><td>¥2,500 - 4,000</td></tr>
+    <tr><td>住宿 ×7晚</td><td>4星/Villa Hotel Tamara/卡尔坎海景/洞穴酒店，500-1000元/晚/人</td><td>¥7,000 - 14,000</td></tr>
+    <tr><td>租车+油费</td><td>4天（含异地还车费+全险+油，约400km）</td><td>¥2,800 - 4,200</td></tr>
+    <tr><td>滑翔伞</td><td>含拍摄 约800-1400TL/人 ×2</td><td>¥600 - 1,000</td></tr>
+    <tr><td>看热气球</td><td>酒店屋顶观看</td><td>¥0（免费）</td></tr>
+    <tr><td>餐饮 ×8天</td><td>正餐+Mahal日落晚餐+街头小吃</td><td>¥3,200 - 5,500</td></tr>
+    <tr><td>门票/活动</td><td>圣索菲亚、地下水宫、峡谷、露天博物馆等</td><td>¥1,600 - 2,600</td></tr>
+    <tr><td>市内交通/杂费</td><td>交通卡、机场大巴、小费、购物</td><td>¥1,500 - 3,000</td></tr>
+    <tr class="total-row"><td colspan="2">合计（2人）</td><td>约 ¥27,000 - 48,000</td></tr>
+  </table>
+</div>
+
+</div><!-- container -->
+
+<div class="footer">
+  土耳其8天7晚自由行攻略 · 最终版 · 2026.08.08 - 08.15（14:20离境）<br>
+  已含实际订票信息（8/10 SAW→达拉曼、8/13 安塔利亚→开塞利）· 营业时间与票价请以出行时官网/现场为准<br>
+  祝旅途愉快！İyi yolculuklar! 🎈
+</div>
+
+<script>
+function toggleDay(header) {
+  const card = header.closest('.day-card');
+  card.classList.toggle('open');
+}
+
+// Nav active state
+const navLinks = document.querySelectorAll('.nav a');
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// 注册 Service Worker，实现离线缓存（仅在 http/https 下生效）
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(err => console.log('SW 注册失败：', err));
+  });
+}
+</script>
+</body>
+</html>
