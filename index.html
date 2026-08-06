@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>土耳其8天7晚自由行攻略 · 最终版 | 2026.08.08-08.15</title>
+<!-- PWA（部署为在线APP时生效，本地打开无影响） -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a6b8a">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="土耳其攻略">
 <style>
   :root {
     --primary: #1a6b8a;
@@ -1757,6 +1766,16 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
+</script>
+<script>
+// Service Worker 注册：仅在线（http/https）部署时生效，本地 file:// 打开会自动跳过
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').catch(function(err) {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
