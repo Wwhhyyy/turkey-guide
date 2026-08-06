@@ -1,6 +1,6 @@
 // 土耳其攻略 PWA — Service Worker
 // 目标：首次联网加载后，完全离线可用。
-const CACHE_NAME = 'turkey-guide-v4';
+const CACHE_NAME = 'turkey-guide-v5';
 
 // 安装时预先缓存的核心资源（应用外壳）
 const PRECACHE_ASSETS = [
